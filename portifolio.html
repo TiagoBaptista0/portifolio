@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiago Baptista | Desenvolvedor Web Criativo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradient 3s linear infinite;
+        }
+
+        .gradient-ferramentas {
+            background: linear-gradient(90deg, rgb(165, 246, 60), rgb(243, 213, 40));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: gradient 10s linear infinite;
+        }
+
+        @keyframes gradient {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            bottom: 5px;
+            right: -12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-primary, .cta-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .cta-secondary {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .cta-primary:hover, .cta-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .services {
+            padding: 8rem 2rem;
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        
+
+        .contact {
+            padding: 8rem 2rem;
+            background: var(--bg-secondary);
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .submit-btn {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        footer {
+            background: var(--bg-primary);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">TB</a>
+            <div class="nav-links">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="sobre">
+        <div class="hero-content">
+            <h1>Olá, eu sou <span class="gradient-text">Tiago Baptista</span></h1>
+            <p>Desenvolvedor Web focado em <a class="gradient-ferramentas">HTML</a>,<a class="gradient-ferramentas">CSS</a>,<a class="gradient-ferramentas">JavaScript</a> e <a class="gradient-ferramentas">PHP</a>, especializado em criar experiências digitais únicas e memoráveis para pequenas empresas.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="cta-primary">Ver Projetos</a>
+                <a href="#contato" class="cta-secondary">Fale Comigo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicos">
+        <h2 class="section-title">Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Sites Institucionais</h3>
+                <p>Desenvolvimento de sites profissionais e responsivos que representam a identidade da sua empresa.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Landing Pages</h3>
+                <p>Páginas estratégicas e otimizadas para converter visitantes em clientes.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Sistemas Web</h3>
+                <p>Desenvolvimento de sistemas personalizados para automatizar e otimizar seus processos.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Meu Portfólio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-carousel">
+                <div class="portfolio-item">
+                    <img src="petluxe.png" alt="Projeto 1" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Moderno</h3>
+                        <p>Design e desenvolvimento completo de loja virtual</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="mercadopagopix.png" alt="Projeto 2" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Sistema de pagamento PHP</h3>
+                        <p>Sistema web de pagamento mercado pago via PIX </p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="kitdeemergenciabackend.png" alt="Projeto 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Kit de Emergencia</h3>
+                        <p>Interface administrativa para gerenciar itens</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="codeverse.png" alt="Projeto 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Site Moderno</h3>
+                        <p>Interface e Design moderno completo para venda virtual</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div> 
+                </div>
+            </div>
+            <div class="portfolio-controls">
+                <button class="portfolio-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <button class="portfolio-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .portfolio-container {
+            position: relative;
+            overflow: hidden;
+            width: 80%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+    
+        .portfolio-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+    
+        .portfolio-item {
+            flex: 0 0 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+    
+        .portfolio-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+    
+        .portfolio-overlay h3 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1rem;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        .portfolio-overlay p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-in-out;
+        }
+    
+        .portfolio-link {
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transform: translateY(20px);
+            transition: transform 0.5s ease-in-out, background-color 0.3s ease-in-out;
+        }
+    
+        .portfolio-link:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(15px);
+        }
+    
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+    
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+    
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p,
+        .portfolio-item:hover .portfolio-link {
+            transform: translateY(0);
+        }
+    
+        .portfolio-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+    
+        .portfolio-controls button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+    
+        .portfolio-controls button:hover {
+            background-color: var(--accent-hover);
+            transform: scale(1.1);
+        }
+    
+        .portfolio-controls button svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+    
+    <script>
+        const portfolioCarousel = document.querySelector('.portfolio-carousel');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const portfolioPrev = document.querySelector('.portfolio-prev');
+        const portfolioNext = document.querySelector('.portfolio-next');
+    
+        let currentIndex = 0;
+        const itemWidth = portfolioItems[0].offsetWidth;
+    
+        function showPortfolioItem(index) {
+            portfolioCarousel.style.transform = `translateX(-${index * itemWidth}px)`;
+        }
+    
+        portfolioPrev.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
+            showPortfolioItem(currentIndex);
+        });
+    
+        portfolioNext.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % portfolioItems.length;
+            showPortfolioItem(currentIndex);
+        });
+    
+        // Inicializa o primeiro item do portfólio
+        showPortfolioItem(currentIndex);
+    </script>
+
+<section class="contact" id="contato">
+    <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
+    <form class="contact-form" data-aos="fade-up">
+      <div class="form-group">
+        <label for="name">Nome Completo</label>
+        <input type="text" id="name" required placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Profissional</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+      <div class="form-group">
+        <label for="project">Tipo de Projeto</label>
+        <select id="project" required class="form-group input">
+          <option value="">Selecione uma opção</option>
+          <option value="site">Site Institucional</option>
+          <option value="landing">Landing Page</option>
+          <option value="sistema">Sistema Web</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Detalhes do Projeto</label>
+        <textarea id="message" rows="5" required placeholder="Conte-me sobre seu projeto..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Enviar Mensagem</button>
+    </form>
+  </section>
+
+  <script>
+    // Seleciona o formulário de contato
+const form = document.querySelector('.contact-form');
+
+// Seleciona o botão de envio
+const submitBtn = form.querySelector('button[type="submit"]');
+
+// Adiciona um evento de escuta para o envio do formulário
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  // Pega os valores dos campos de entrada
+  const nameInput = document.getElementById('name');
+  const emailInput = document.getElementById('email');
+  const projectInput = document.getElementById('project');
+  const messageInput = document.getElementById('message');
+
+  // Prepara o conteúdo do e-mail
+  const emailSubject = 'New Contact Form Submission';
+  const emailBody = `
+    Name: ${nameInput.value}
+    Email: ${emailInput.value}
+    Project: ${projectInput.value}
+    Message: ${messageInput.value}
+  `;
+
+  // Abre o cliente de e-mail do usuário usando um link mailto
+  const mailtoLink = `mailto:tt1827471@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+  window.location.href = mailtoLink;
+
+  // Simula o envio do formulário
+  submitBtn.textContent = 'Enviando...';
+  submitBtn.disabled = true;
+
+  // Aguarda 1.5 segundos antes de mostrar a mensagem de sucesso
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  // Exibe mensagem de confirmação e muda a cor do botão
+  submitBtn.textContent = 'Mensagem Enviada!';
+  submitBtn.style.background = '#10B981';
+
+  // Restaura o botão e o formulário após 2 segundos
+  setTimeout(() => {
+    form.reset();
+    submitBtn.textContent = 'Enviar Mensagem';
+    submitBtn.style.background = 'var(--accent)';
+    submitBtn.disabled = false;
+  }, 2000);
+});
+
+
+  </script>
+
+  <footer>
+      <div class="footer-content">
+          <h3 class="gradient-text">Tiago Baptista</h3>
+          <p>Transformando ideias em experiências digitais memoráveis</p>
+          <div class="social-links">
+              <a href="#" class="social-link" target="_blank">LinkedIn</a>
+              <a href="#" class="social-link" target="_blank">GitHub</a>
+              <a href="#" class="social-link" target="_blank">Behance</a>
+              <a href="mailto:contato@example.com" class="social-link">Email</a>
+          </div>
+      </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+      // Inicializa AOS
+      AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 100
+      });
+
+      // Cursor personalizado
+     
+
+      // Efeito de hover nos links
+      const links = document.querySelectorAll('a, button');
+      links.forEach(link => {
+          link.addEventListener('mouseenter', () => {
+              cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+              cursor.style.border = '1px solid var(--accent)';
+          });
+          
+          link.addEventListener('mouseleave', () => {
+              cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+              cursor.style.border = '2px solid var(--accent)';
+          });
+      });
+
+      // Navegação suave
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              const target = document.querySelector(this.getAttribute('href'));
+              if (target) {
+                  target.scrollIntoView({
+                      behavior: 'smooth',
+                      block: 'start'
+                  });
+              }
+          });
+      });
+
+      // Animação da navbar no scroll
+      let lastScroll = 0;
+      window.addEventListener('scroll', () => {
+          const navbar = document.querySelector('.navbar');
+          const currentScroll = window.pageYOffset;
+
+          if (currentScroll <= 0) {
+              navbar.style.transform = 'translateY(0)';
+              return;
+          }
+          
+          if (currentScroll > lastScroll) {
+              navbar.style.transform = 'translateY(-100%)';
+          } else {
+              navbar.style.transform = 'translateY(0)';
+          }
+          lastScroll = currentScroll;
+      });
+
+      
+
+      // Efeito parallax no hero
+      window.addEventListener('scroll', () => {
+          const hero = document.querySelector('.hero');
+          const scrolled = window.pageYOffset;
+          hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+      });
+  </script>
+</body>
+</html>
