@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiago Baptista | Desenvolvedor Web Criativo</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+   
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">TB</a>
+            <div class="nav-links">
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#servicos" class="nav-link">Serviços</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="sobre">
+        <div class="hero-content">
+            <h1>Olá, eu sou <span class="gradient-text">Tiago Baptista</span></h1>
+            <p>Desenvolvedor Web focado em <a class="gradient-ferramentas">HTML</a>,<a class="gradient-ferramentas">CSS</a>,<a class="gradient-ferramentas">JavaScript</a> e <a class="gradient-ferramentas">PHP</a>, especializado em criar experiências digitais únicas e memoráveis para pequenas empresas.</p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="cta-primary">Ver Projetos</a>
+                <a href="#contato" class="cta-secondary">Fale Comigo</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="servicos">
+        <h2 class="section-title">Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Sites Institucionais</h3>
+                <p>Desenvolvimento de sites profissionais e responsivos que representam a identidade da sua empresa.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                <h3>Landing Pages</h3>
+                <p>Páginas estratégicas e otimizadas para converter visitantes em clientes.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-icon"><i class="fas fa-cogs"></i></div>
+                <h3>Sistemas Web</h3>
+                <p>Desenvolvimento de sistemas personalizados para automatizar e otimizar seus processos.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Meu Portfólio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-carousel">
+                <div class="portfolio-item">
+                    <img src="petluxe.png" alt="Projeto 1" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Moderno</h3>
+                        <p>Design e desenvolvimento completo de loja virtual</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="mercadopagopix.png" alt="Projeto 2" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Sistema de pagamento PHP</h3>
+                        <p>Sistema web de pagamento mercado pago via PIX </p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="kitdeemergenciabackend.png" alt="Projeto 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Kit de Emergencia</h3>
+                        <p>Interface administrativa para gerenciar itens</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="codeverse.png" alt="Projeto 3" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3>Site Moderno</h3>
+                        <p>Interface e Design moderno completo para venda virtual</p>
+                        <a href="#" class="portfolio-link">Saiba Mais</a>
+                    </div> 
+                </div>
+            </div>
+            <div class="portfolio-controls">
+                <button class="portfolio-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <button class="portfolio-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+<section class="contact" id="contato">
+    <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
+    <form class="contact-form" data-aos="fade-up">
+      <div class="form-group">
+        <label for="name">Nome Completo</label>
+        <input type="text" id="name" required placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Profissional</label>
+        <input type="email" id="email" required placeholder="seu@email.com">
+      </div>
+      <div class="form-group">
+        <label for="project">Tipo de Projeto</label>
+        <select id="project" required class="form-group input">
+          <option value="">Selecione uma opção</option>
+          <option value="site">Site Institucional</option>
+          <option value="landing">Landing Page</option>
+          <option value="sistema">Sistema Web</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Detalhes do Projeto</label>
+        <textarea id="message" rows="5" required placeholder="Conte-me sobre seu projeto..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Enviar Mensagem</button>
+    </form>
+  </section>
+
+
+  <footer>
+      <div class="footer-content">
+          <h3 class="gradient-text">Tiago Baptista</h3>
+          <p>Transformando ideias em experiências digitais memoráveis</p>
+          <div class="social-links">
+              <a href="#" class="social-link" target="_blank">LinkedIn</a>
+              <a href="#" class="social-link" target="_blank">GitHub</a>
+              <a href="#" class="social-link" target="_blank">Behance</a>
+              <a href="mailto:contato@example.com" class="social-link">Email</a>
+          </div>
+      </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="portifolio.js"></script>
+  <script src="contato.js"></script>
+  <script src="efeito.js"></script>
+</body>
+</html>
