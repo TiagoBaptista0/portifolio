@@ -1,3 +1,7 @@
+.portfolio {
+  margin-bottom: 20px; /* Adiciona espaço abaixo de cada contêiner */
+}
+
 .portfolio-container {
   position: relative;
   overflow: hidden;
