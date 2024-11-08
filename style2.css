@@ -1,33 +1,45 @@
+/* Ajuste do espaçamento da seção portfolio */
 .portfolio {
-  margin-bottom: 20px; /* Adiciona espaço abaixo de cada contêiner */
+    padding: 8rem 0;
+    margin-bottom: 4rem; /* Adiciona espaço entre o portfolio e a próxima seção */
+  
 }
-
+/* Container do portfolio com margens adequadas */
 .portfolio-container {
-  position: relative;
-  overflow: hidden;
-  width: 80%;
-  max-width: 1400px;
-  margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    width: 90%;
+    max-width: 1400px;
+    margin: 4rem auto; /* Aumenta o espaçamento vertical */
+    padding: 0 2rem;
 }
 
+/* Ajuste do carrossel */
 .portfolio-carousel {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  will-change: transform;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    gap: 2rem; /* Adiciona espaço entre os slides */
 }
 
+/* Ajuste do item do portfolio para evitar cortes */
 .portfolio-item {
-  flex: 0 0 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
+    flex: 0 0 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 1rem; /* Adiciona espaço entre os slides */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Ajuste da imagem para evitar cortes */
 .portfolio-image {
-  width: 100%;
-  height: 500px;
-  object-fit: cover;
-  transition: transform 0.5s ease-in-out;
+    width: 100%;
+    height: 500px;
+    object-fit: contain; /* Alterado de 'cover' para 'contain' */
+    padding: 1rem; /* Adiciona padding interno */
+    background-color: rgba(15, 23, 42, 0.8); /* Fundo escuro para imagens */
+    transition: transform 0.5s ease-in-out;
 }
 
 .portfolio-overlay {
@@ -90,15 +102,17 @@
   transform: translateY(0);
 }
 
+/* Ajuste dos controles do carrossel */
 .portfolio-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 2;
 }
 
 .portfolio-controls button {
@@ -123,4 +137,20 @@
 .portfolio-controls button svg {
   width: 24px;
   height: 24px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .portfolio-container {
+        width: 95%;
+        padding: 0 1rem;
+    }
+
+    .portfolio-image {
+        height: 350px; /* Altura reduzida para mobile */
+    }
+
+    .portfolio-controls {
+        padding: 0 0.5rem;
+    }
 }
