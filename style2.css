@@ -1,0 +1,122 @@
+.portfolio-container {
+  position: relative;
+  overflow: hidden;
+  width: 80%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.portfolio-carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+.portfolio-item {
+  flex: 0 0 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.portfolio-overlay h3 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+  transform: translateY(20px);
+  transition: transform 0.5s ease-in-out;
+}
+
+.portfolio-overlay p {
+  color: #94a3b8;
+  margin-bottom: 2rem;
+  transform: translateY(20px);
+  transition: transform 0.5s ease-in-out;
+}
+
+.portfolio-link {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  transform: translateY(20px);
+  transition: transform 0.5s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.portfolio-link:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(15px);
+}
+
+.portfolio-item:hover .portfolio-image {
+  transform: scale(1.1);
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-item:hover .portfolio-overlay h3,
+.portfolio-item:hover .portfolio-overlay p,
+.portfolio-item:hover .portfolio-link {
+  transform: translateY(0);
+}
+
+.portfolio-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.portfolio-controls button {
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.portfolio-controls button:hover {
+  background-color: var(--accent-hover);
+  transform: scale(1.1);
+}
+
+.portfolio-controls button svg {
+  width: 24px;
+  height: 24px;
+}
